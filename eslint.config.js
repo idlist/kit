@@ -41,6 +41,7 @@ export default ts.config(
       'no-empty': 'off',
       '@typescript-eslint/no-empty': 'off',
       '@typescript-eslint/no-empty-interface': 'off',
+      '@typescript-eslint/no-empty-object-type': 'off',
 
       '@typescript-eslint/no-empty-function': 'warn',
       '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],

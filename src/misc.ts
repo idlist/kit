@@ -1,7 +1,5 @@
 /**
- * `value === null || value === undefined` is too long.
- * @param value value.
- * @returns `true` if the value is nullish, otherwise `false`.
+ * Do nothing and make ESLint happy.
  */
-export const isNullish = (value: unknown): value is null | undefined | void =>
-  value === null || value === undefined
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+export const noop = () => {}

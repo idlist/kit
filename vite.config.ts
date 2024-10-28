@@ -24,6 +24,7 @@ export default defineConfig({
       name: 'RewlKit',
     },
     outDir: 'lib',
+    sourcemap: true,
     minify: false,
   },
 })
