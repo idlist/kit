@@ -5,7 +5,7 @@ import { exists } from './type-gym'
  *
  * @param length Length.
  * @param initialValue Initial value of the elements in the array.
- * @returns The created array.
+ * @returns Created array.
  */
 export const createArray = <T = unknown>(length: number, initialValue?: T): T[] =>
   exists(initialValue) ? Array.from<T>({ length }).fill(initialValue) : Array.from<T>({ length })
@@ -21,7 +21,8 @@ export const range = (n: number) => [...createArray(n).keys()]
 /**
  * Compomise with `a = Array.isArray(a) ? a : [a]` and make TypeScript happy.
  *
- * @param maybeArray
+ * @param maybeArray Something, maybe it's an array, maybe not.
+ * @returns Created array.
  */
 export const arrayize = <T>(maybeArray?: T | T[] | null): T[] =>
   Array.isArray(maybeArray) ? maybeArray : (exists(maybeArray) ? [maybeArray] : [])
