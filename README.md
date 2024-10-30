@@ -6,6 +6,6 @@ This toolkit does not try to replicate or replace `underscore`, `lodash`, `radas
 
 # Why?
 
-- I believe I had coded those utilities tens of hundreds of times.
-- To use *(somewhat)* more modern (but *not necessary* to be efficient) syntax
+- I believe I have coded those utilities tens of hundreds of times.
+- To use *(somewhat)* more modern (but *not necessary* to be efficient) syntax.
 - To make TypeScript and ESLint happy.

@@ -6,10 +6,18 @@
   "author": "i'DLisT <i@idl.ist> (https://idl.ist/)",
   "license": "MIT",
   "files": [
-    "lib",
-    "src"
+    "lib"
   ],
-  "main": "lib/index.js",
+  "types": "./lib/index.d.ts",
+  "module": "./lib/index.js",
+  "main": "./lib/index.umd.cjs",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib/index.umd.cjs"
+    }
+  },
   "homepage": "https://github.com/idlist/kit#readme",
   "repository": {
     "type": "git",
