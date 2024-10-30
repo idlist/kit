@@ -2,7 +2,7 @@
 
 import { assertType, describe, it } from 'vitest'
 import { isNullish, exists } from '@/type-gym.js'
-import { noop } from '@/misc'
+import { noop } from '@/make-happy'
 
 describe('isNullish', () => {
   it('usual use case', () => {

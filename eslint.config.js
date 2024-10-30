@@ -2,30 +2,33 @@ import globals from 'globals'
 import js from '@eslint/js'
 import ts from 'typescript-eslint'
 
-const jsFiles = [
-  'eslint.config.js',
-]
+const files = {
+  js: [
+    'eslint.config.js',
+  ],
+  ts: [
+    'src/**/*.ts',
+    'test/**/*.ts',
+  ],
+  tsScript: [
+    '*.ts',
+  ],
+}
 
-const tsFiles = [
-  'src/**/*.ts',
-  'test/**/*.ts',
-]
-
-const tsScriptFiles = [
-  '*.ts',
-]
+const allFiles = Object.values(files).flat()
 
 export default ts.config(
   {
-    files: [...tsFiles, ...tsScriptFiles],
+    files: files.tsScript,
     extends: [
       js.configs.recommended,
       ...ts.configs.recommended,
     ],
   },
   {
-    files: tsFiles,
+    files: files.ts,
     extends: [
+      js.configs.recommended,
       ...ts.configs.recommendedTypeChecked,
     ],
     languageOptions: {
@@ -36,7 +39,7 @@ export default ts.config(
     },
   },
   {
-    files: [...tsFiles, ...tsScriptFiles],
+    files: [...files.ts, ...files.tsScript],
     rules: {
       'no-empty': 'off',
       '@typescript-eslint/no-empty': 'off',
@@ -49,7 +52,7 @@ export default ts.config(
     },
   },
   {
-    files: jsFiles,
+    files: files.js,
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
@@ -64,7 +67,7 @@ export default ts.config(
     },
   },
   {
-    files: [...tsFiles, ...jsFiles],
+    files: allFiles,
     languageOptions: {
       globals: {
         ...globals.node,

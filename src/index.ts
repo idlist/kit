@@ -1,4 +1,6 @@
 export * from './array'
 export * from './type-gym'
-export * from './misc'
 export * from './time'
+export * from './math'
+export * from './frames'
+export * from './make-happy'
