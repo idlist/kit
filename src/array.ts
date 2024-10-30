@@ -7,7 +7,7 @@ import { exists } from './type-gym'
  * @param initialValue Initial value of the elements in the array.
  * @returns The created array.
  */
-export const createArray = <T = undefined>(length: number, initialValue?: T): T[] =>
+export const createArray = <T = unknown>(length: number, initialValue?: T): T[] =>
   exists(initialValue) ? Array.from<T>({ length }).fill(initialValue) : Array.from<T>({ length })
 
 /**
