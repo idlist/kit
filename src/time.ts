@@ -1,13 +1,26 @@
 import { noop } from './make-happy'
 
+type MsGetter = number | (() => number)
+
+const getMs = (ms?: MsGetter) => {
+  switch (typeof ms) {
+    case 'undefined':
+      return 0
+    case 'function':
+      return ms()
+    default:
+      return ms
+  }
+}
+
 /**
  * Cancellable `setTimeout`.
  *
  * @param callback Function to call when the timer elapses.
- * @param ms Time in milliseconds.
+ * @param ms Time in milliseconds, or a function returning the time.
  * @returns The created timer.
  */
-export const createTimeout = <T>(callback: () => T | PromiseLike<T>, ms: number = 0) => {
+export const createTimeout = <T>(callback: () => T | PromiseLike<T>, ms?: MsGetter) => {
   let it: ReturnType<typeof setTimeout> | undefined
 
   const run = () => {
@@ -16,7 +29,7 @@ export const createTimeout = <T>(callback: () => T | PromiseLike<T>, ms: number 
     return new Promise<T>((resolve) => {
       it = setTimeout(() => {
         void (async () => resolve(await callback()))()
-      }, ms)
+      }, getMs(ms))
     })
   }
 
@@ -65,15 +78,15 @@ export const delay = (ms: number) => new Promise<void>((resolve) => setTimeout(r
  * Cancellable `setInterval`.
  *
  * @param callback Function to call when the timer elapses.
- * @param ms
- * @returns
+ * @param ms Time in milliseconds, or a function returning the time.
+ * @returns The created timer.
  */
-export const createInterval = <T>(callback: () => T | PromiseLike<T>, ms: number = 0) => {
+export const createInterval = <T>(callback: () => T | PromiseLike<T>, ms?: MsGetter) => {
   let it: ReturnType<typeof setInterval> | undefined
 
   const run = () => {
     if (it) cancel()
-    it = setInterval(() => void callback(), ms)
+    it = setInterval(() => void callback(), getMs(ms))
   }
 
   const cancel = () => {

@@ -4,7 +4,7 @@ import cleanup from 'rollup-plugin-cleanup'
 
 const __dirname = (path: string) => fileURLToPath(new URL(path, import.meta.url))
 
-// https://vitejs.dev/config/
+// https://vite.dev/config/
 export default defineConfig({
   plugins: [
     cleanup({
